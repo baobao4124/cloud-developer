@@ -35,7 +35,7 @@ export async function createTodo(createTodoRequest: CreateTodoRequest, userId: s
     const todoId = uuid.v4()
 
     try {
-        if (createTodoRequest.name) return null;
+        if (!createTodoRequest.name) return null;
 
         const result = await todoAccess.createTodo({
             todoId: todoId,
@@ -69,8 +69,6 @@ export async function updateTodo(todoId: string, userId: string, updateRequest: 
     logger.info(`About to attempt updateTodo of todo ${todoId} user ${userId}, with ${JSON.stringify(updateRequest)}`)
 
     try {
-        if (updateRequest.name) return false;
-
         const result = await todoAccess.updateTodo(userId, todoId, updateRequest)
         logger.info(`Result of updateTodo: `, result)
         return result
