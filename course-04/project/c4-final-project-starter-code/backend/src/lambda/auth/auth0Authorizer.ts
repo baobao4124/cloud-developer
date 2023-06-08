@@ -87,7 +87,7 @@ async function getCertificate(jwtKid: string): Promise<string> {
 
     logger.info(`The result from getting cert: ${result}`)
 
-    const signingKey: JwksKeyProperties = result.data.keys.find(element => element.kid === jwtKid)
+    const signingKey = result.data.keys.find(element => element.kid === jwtKid)
 
     logger.info(`The signingKey: ${signingKey}.`)
 
