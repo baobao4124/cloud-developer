@@ -39,7 +39,6 @@ provider:
           Action:
             - xray:PutTelemetryRecords
             - xray:PutTraceSegments
-          Resource: "*"
 
 functions:
   Auth:

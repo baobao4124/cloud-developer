@@ -125,6 +125,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
               content: 'New task',
               onClick: this.onTodoCreate
             }}
+            required
             fluid
             actionPosition="left"
             placeholder="To change the world..."
