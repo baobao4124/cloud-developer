@@ -32,14 +32,6 @@ provider:
     # Enable API Gateway logs
     restApi: true
 
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - xray:PutTelemetryRecords
-            - xray:PutTraceSegments
-
 functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
@@ -84,6 +76,7 @@ functions:
           request:
             schemas:
               application/json: ${file(models/create-todo-model.json)}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -107,6 +100,7 @@ functions:
           request:
             schema:
               application/json: ${file(models/update-todo-model.json)}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
